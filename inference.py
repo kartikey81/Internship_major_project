@@ -21,7 +21,7 @@ def pred():
     avg_tr_value_df['avg_transaction_value'] = pd.to_numeric(date_value_array[1::2])
 
     yesterday_date = (datetime.today()-timedelta(days=1)).strftime('%d/%m/%Y')
-    ohlc_df = investpy.get_crypto_historical_data(crypto='bitcoin',from_date='01/01/2020',to_date=yesterday_date)
+    ohlc_df = investpy.get_crypto_historical_data(crypto='bitcoin',from_date='01/01/2021',to_date=yesterday_date)
     ohlc_df = ohlc_df.reset_index().drop(['Currency','Volume','High','Low'],axis=1)
     ohlc_df.columns = ['Date','opening_price','closing_price']
 
@@ -39,7 +39,7 @@ def pred():
     final_df['tema90 avg_transaction_value']  = ta.tema(final_df['avg_transaction_value'],90)
     final_df['wma30 avg_transaction_value']  = ta.wma(final_df['avg_transaction_value'],30)
 
-    final_df = final_df[(final_df['Date'] >= '2020-04-01')]
+    final_df = final_df[(final_df['Date'] >= '2021-01-01')]
 
     final_df = final_df[['Date', 'sma90 avg_transaction_value', 'ema90 avg_transaction_value',
                         'dema7 opening_price', 'closing_price', 'wma30 avg_transaction_value',
@@ -65,4 +65,4 @@ def get_current_close_price():
     return investpy.get_crypto_historical_data(crypto='bitcoin',from_date='01/01/2021',to_date=datetime.today().strftime('%d/%m/%Y'))['Close'][-1]
 
 def get_df():
-    return investpy.get_crypto_historical_data(crypto='bitcoin',from_date='01/04/2020',to_date=datetime.today().strftime('%d/%m/%Y')).reset_index()[['Date','Close']]
+    return investpy.get_crypto_historical_data(crypto='bitcoin',from_date='01/01/2021',to_date=datetime.today().strftime('%d/%m/%Y')).reset_index()[['Date','Close']]
