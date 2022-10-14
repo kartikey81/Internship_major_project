@@ -21,6 +21,7 @@ pytz
 datetime
 quandl
 investpy
+investiny
 tqdm
 bs4
 joblib
