@@ -22,7 +22,7 @@ def pred():
     avg_tr_value_df['avg_transaction_value'] = pd.to_numeric(date_value_array[1::2], errors="ignore")
 
     yesterday_date = (datetime.today()-timedelta(days=1)).strftime('%d/%m/%Y')
-    ohlc_df = historical_data(crypto='bitcoin',from_date='01/01/2013',to_date=yesterday_date)
+    ohlc_df = historical_data(from_date='01/01/2013',to_date=yesterday_date)
     ohlc_df = ohlc_df.reset_index().drop(['Currency','Volume','High','Low'],axis=1)
     ohlc_df.columns = ['Date','opening_price','closing_price']
 
