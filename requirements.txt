@@ -24,6 +24,6 @@ investpy
 tqdm
 bs4
 joblib
-
+git+https://github.com/alvarobartt/investpy.git@master
 pandas_ta
 sklearn
