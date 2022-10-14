@@ -1,7 +1,7 @@
 import quandl
 import investpy
 import requests
-from investiny import historical)data
+from investiny import historical_data
 from bs4 import BeautifulSoup
 import pandas as pd
 from tqdm import tqdm
