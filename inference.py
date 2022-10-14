@@ -11,7 +11,7 @@ from sklearn.preprocessing import RobustScaler,MinMaxScaler
 import pickle
 
 def pred():
-    soup = str(requests.get('https://bitinfocharts.com/comparison/transactionvalue-btc.html#alltime').content)
+    soup = str(requests.get('https://bitinfocharts.com/comparison/bitcoin-transactions.html').content)
     scraped_output = (soup.split('[[')[1]).split('{labels')[0][0:-2]
     date_value_array = scraped_output.replace('new Date(','').replace(')','').replace('[','').replace(']','').replace('"','').replace('/','-').split(',')
     data_dict = dict(zip(date_value_array[::2],date_value_array[1::2]))
