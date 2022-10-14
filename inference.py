@@ -18,7 +18,7 @@ def pred():
     avg_transaction_value = data_dict[(datetime.today()-timedelta(days=1)).strftime('%Y-%m-%d')]
     avg_tr_value_df = pd.DataFrame()
     avg_tr_value_df['Date'] = pd.to_datetime(date_value_array[::2])
-    avg_tr_value_df['avg_transaction_value'] = pd.to_numeric(date_value_array[1::2])
+    avg_tr_value_df['avg_transaction_value'] = pd.to_numeric(date_value_array[1::2], errors="ignore")
 
     yesterday_date = (datetime.today()-timedelta(days=1)).strftime('%d/%m/%Y')
     ohlc_df = investpy.get_crypto_historical_data(crypto='bitcoin',from_date='01/01/2013',to_date=yesterday_date)
